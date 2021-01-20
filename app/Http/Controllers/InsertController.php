@@ -27,8 +27,18 @@ class InsertController extends Controller
         // viene restituito un array associativo con i dati della tabella
         $file = file($request->file->getRealPath());
         
-        $dati = array_slice($file,1);
-        // elimino il primo elemento dellárray che contiene solo il nome della colonna 
-        dd($dati);
+        // elimino il primo elemento dell'array che contiene solo il nome della colonna 
+        $datas = array_slice($file, 1);
+
+        
+
+        //forech per inserire i files nella cartella resources/files
+        foreach ($datas as $index=>$data) {
+            $fileName = resource_path('files/' . date('y-m-d-H-i-s') .$index. '.cvs');
+            file_put_contents($fileName, $data);
+            echo $data;
+        }
+        
+        
     }
 }
