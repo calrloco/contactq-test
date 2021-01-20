@@ -18,6 +18,9 @@ class User extends Authenticatable
     protected $fillable = [
         'nome','cognome', 'email','note'
     ];
-
+    // funzione per importare i files
+    public function importDb(){
+        
+    }
     
 }
